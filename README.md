@@ -19,6 +19,9 @@ wget https://ftp.postgresql.org/pub/source/v12.5/postgresql-12.5.tar.gz
 tar xzvf postgresql-12.5.tar.gz
 ```
 
+------------------------------
+We use our own imdb-job source: https://github.com/PeiMu/imdb_job-postgres
+
 * Compile and install Postgres
 
 The default installation location is ```/mnt/postgresql-12.5```. Change it to any other locations if needed. 
@@ -32,6 +35,9 @@ sudo make install
 echo 'export PATH=/mnt/postgresql-12.5/bin:$PATH' >> ~/.bashrc
 source ~/.bashrc
 ```
+
+------------------------------
+We use our own PostgreSQL: https://github.com/PeiMu/PostgreSQL-12.3
 
 ### Installing pg_hint_plan 
 ```bash
@@ -70,6 +76,9 @@ cp load_data/imdb/postgresql.conf /mnt/postgres_data/imdb/
 pg_ctl -D /mnt/postgres_data/imdb/ start
 bash load_data/imdb/load_job.sh /mnt/adaptiveness_vs_learning/load_data/imdb/
 ```
+
+------------------------------
+We use our own imdb-job source: https://github.com/PeiMu/imdb_job-postgres
 
 <!-- For other config details such as loading IMDB data to Postgres and setting up ```pg_hint_plan```,  you may refer to the [Balsa repo](https://github.com/balsa-project/balsa) -->
 
