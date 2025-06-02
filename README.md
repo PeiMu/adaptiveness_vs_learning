@@ -43,7 +43,7 @@ git clone https://github.com/ossc-db/pg_hint_plan.git -b REL12_1_3_7
 # to
 #   PG_CONFIG = /mnt/postgresql-12.5/bin/pg_config
 sudo make
-sudo make install
+sudo env "PATH=$PATH" make install
 ```
 
 ### Loading IMDB data to Postgres
