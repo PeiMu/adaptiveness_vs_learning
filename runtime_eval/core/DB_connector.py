@@ -21,19 +21,19 @@ import re
 import signal
 
 class Postgres_Connector:
-    def __init__(self, server='localhost', username='postgres', password='postgres', db_name='imdbload'):
+    def __init__(self, server='localhost', username='pei', password='', db_name='imdb'):
         self.server = server
         self.username = username
         self.password = password
         self.db_name = db_name
 
         if db_name:
-            self.db_url = f"host={server} port=5432 user={username} dbname={db_name} password={password} options='-c statement_timeout={6000000}' "
+            self.db_url = f"host={server} port=5432 user={username} dbname={db_name} password={password} "
             self.init_db(db_name)
     
     def _reset_connection(self,):
         if self.db_name:
-            self.db_url = f"host={self.server} port=5432 user={self.username} dbname={self.db_name} password={self.password} options='-c statement_timeout={600000}' "
+            self.db_url = f"host={self.server} port=5432 user={self.username} dbname={self.db_name} password={self.password} "
             self.init_db(self.db_name)
         else:
             logging.info("Database name not defnied.")
@@ -477,16 +477,18 @@ class DB_instance:
         return self.connector.explain(query, execute=True)
 
 class PG_LIP_Connector(Postgres_Connector):
-    def __init__(self, server='localhost', username='postgres', password='postgres', db_name='imdbload'):
+    def __init__(self, server='localhost', username='pei', password='', db_name='imdb'):
         super(PG_LIP_Connector, self).__init__(server, username, password, db_name)
         self.db_name=db_name
         # self.connections = [Postgres_Connector(db_name=self.db_name) for _ in range(8)]
+        print("init PG_LIP_Connector done")
     
     def load_functions(self, load_func_sql_file):
         with open(load_func_sql_file, 'r') as f:
             func_sql = f.read()
         self.execute(func_sql, set_env=True)
         # self.disable_parallel()
+        print("load function done")
     
     def _beautify_sql(self, sql):
         lines = sql.strip('\n').strip(' ').split('\n')
@@ -584,7 +586,7 @@ def check_same_db(db_list):
             
 
 if __name__ == '__main__':
-    # pg_imdb = DB_instance('postgres', 'imdbload')
+    # pg_imdb = DB_instance('imdb', 'imdb')
     # pg_imdb.show_db_info()
 
     # # mssql_imdb = DB_instance('mssql', 'imdb')

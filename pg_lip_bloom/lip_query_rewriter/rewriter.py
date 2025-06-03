@@ -46,9 +46,9 @@ class PostgreConnector:
 
     def __init__(self,):
         server='localhost' 
-        username='postgres'
-        password='postgres'
-        db_name='imdbload'
+        username='imdb'
+        password=''
+        db_name='imdb'
         self.db_url = f"host={server} port=5432 user={username} dbname={db_name} password={password} options='-c statement_timeout={6000000}' "
         db = self.db_url.format(db_name)
         self.PG = Postgres(db)

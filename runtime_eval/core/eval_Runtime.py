@@ -154,6 +154,7 @@ class PG_LIP_Runtime_Evaluator(Runtime_Evaluator):
 
     def init_functions(self, init_sql_file):
         self.db_instance.connector.load_functions(init_sql_file)
+        print("init function done in PG_LIP_Runtime_Evaluator")
     
     def evaluate_queries(self, eval_lip=True, sql_dir=None, sql_files=None, save_json_file=None,\
                          multiple_runs=5, rerun_finished=False, skip_queries=[], timeout=None, 
