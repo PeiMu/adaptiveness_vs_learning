@@ -9,7 +9,7 @@ pg_lip_bloom:
 install:
 	sudo cp pg_lip_bloom.control $(PG_DIR)/share/postgresql/extension/
 	sudo cp pg_lip_bloom--1.0.sql $(PG_DIR)/share/postgresql/extension/
-	sudo cp pg_lip_bloom.so $(PG_DIR)/lib/
+	sudo cp pg_lip_bloom.so $(PG_DIR)/lib/postgresql/
 
 clean:
 	rm pg_lip_bloom.so pg_lip_bloom.o bloom.o
