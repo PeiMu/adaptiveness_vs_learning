@@ -1,6 +1,12 @@
+PATH='/home/pei/Project/adaptiveness_vs_learning/runtime_eval/'
+import sys
+sys.path.append(PATH)
+
 from core.cardinality_estimation_quality.cardinality_estimation_quality import *
 from treelib import Node, Tree
 from tqdm import tqdm
+
+queries_dir='/home/pei/Project/adaptiveness_vs_learning/queries/job/original/'
 
 JOIN_NODE_TYPES = {'Nested Loop': 'NestLoop', 'Hash Join': 'HashJoin', 'Merge Join': 'MergeJoin'}
 SCAN_NODE_TYPES = {'Index Scan': 'IndexScan', 'Seq Scan': 'SeqScan', 'Index Only Scan': 'IndexScan'}
@@ -49,7 +55,7 @@ class PostgreConnector:
         username='imdb'
         password=''
         db_name='imdb'
-        self.db_url = f"host={server} port=5432 user={username} dbname={db_name} password={password} options='-c statement_timeout={6000000}' "
+        self.db_url = f"host={server} port=5432 user={username} dbname={db_name} password={password} "
         db = self.db_url.format(db_name)
         self.PG = Postgres(db)
 
